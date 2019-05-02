@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Biblioteca Unidesc</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Biblioteca Unidesc </a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html">inicio</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="livro.html">Livros</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal" data-target="#login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="livros" id="portfolio">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-3 mr-auto">
+              Lista de livros
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastroCategoria" >Add nova Cageroria</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Add novo livro</button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Editora</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>O mundo linux</td>
+              <td>Paulo de Feitas</td>
+              <td>Saraiva</td>
+              <td>Informatica</td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
+                <button type="button" class="btn btn-sm btn-danger">Remver</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>O sucesso de uma boiada</td>
+              <td>José de melo</td>
+              <td>Globo</td>
+              <td>Animais</td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
+                <button type="button" class="btn btn-sm btn-danger">Remver</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>O amor é lindo</td>
+              <td>Maria Alves</td>
+              <td>Globo</td>
+              <td>Romances</td>
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
+                <button type="button" class="btn btn-sm btn-danger">Remver</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <nav>
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+              <li class="page-item">
+                <a class="page-link" href="#">Próxima</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+    </div>
+  </section>
+
+
+<!--  Cadastro-->
+  <div class="modal fade" id="cadastrolivro" tabindex="-1" role="dialog" aria-labelledby="cadastro" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastro de livro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="NomeLivro" class="col-form-label">Nome do livro:</label>
+              <input type="text" class="form-control" id="NomeLivro">
+            </div>
+            <div>
+              <label for="NomeAutor" class="col-form-label">Autor:</label>
+              <input type="text" class="form-control" id="NomeAutor">
+            </div>
+            <div>
+              <label for="NomeEditora" class="col-form-label">Editora:</label>
+              <input type="text" class="form-control" id="NomeEditora">
+            </div>
+            <label>Categoria:</label>
+            <select class="custom-select">
+              <option selected>Seleciona</option>
+              <option value="Informatica">Informática</option>
+              <option value="Animais">Animais</option>
+              <option value="Romances">Romances</option>
+            </select>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Resumo:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  Cadastro Categoria-->
+  <div class="modal fade" id="cadastroCategoria" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastro de Categoria</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="NomeCategoria" class="col-form-label">Nome da categoria:</label>
+              <input type="text" class="form-control" id="NomeCategoria">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Login-->
+  <div class="modal fade" id="login" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Conectar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="NomeUsuario" class="col-form-label">Nome do usuário:</label>
+              <input type="text" class="form-control" id="NomeUsuario">
+            </div>
+            <div class="form-group">
+              <label for="SenhaUsuario" class="col-form-label">Senha:</label>
+              <input type="text" class="form-control" id="SenhaUsuario">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Conectar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  footer-->
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Alunos unidesc 2019</small>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
