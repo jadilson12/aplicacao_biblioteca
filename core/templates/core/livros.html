@@ -80,35 +80,42 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="NomeLivro" class="col-form-label">Nome do livro:</label>
-              <input type="text" class="form-control" id="NomeLivro">
+          <form action="{% url 'core_novo_livro' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.nome|bootstrap }}
+               </div>
             </div>
-            <div>
-              <label for="NomeAutor" class="col-form-label">Autor:</label>
-              <input type="text" class="form-control" id="NomeAutor">
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.autor|bootstrap }}
+               </div>
             </div>
-            <div>
-              <label for="NomeEditora" class="col-form-label">Editora:</label>
-              <input type="text" class="form-control" id="NomeEditora">
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.lancamento|bootstrap }}
+               </div>
             </div>
-            <label>Categoria:</label>
-            <select class="custom-select">
-              <option selected>Seleciona</option>
-              <option value="Informatica">Informática</option>
-              <option value="Animais">Animais</option>
-              <option value="Romances">Romances</option>
-            </select>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Resumo:</label>
-              <textarea class="form-control" id="message-text"></textarea>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.editora|bootstrap }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form.categoria|bootstrap }}
+                </div>
             </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.resumo|bootstrap }}
+               </div>
+            </div>
+              <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
@@ -125,11 +132,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="{% url 'core_novo_livro' %}" method="post">
             <div class="form-group">
               <label for="NomeCategoria" class="col-form-label">Nome da categoria:</label>
               <input type="text" class="form-control" id="NomeCategoria">
             </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Salvar</button>
           </form>
         </div>
         <div class="modal-footer">
