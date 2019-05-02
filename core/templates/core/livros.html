@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load bootstrap %}
+
 {% block main %}
     {% include 'core/navbar.html' %}
   <section class="livros" id="portfolio">
@@ -25,44 +27,27 @@
               <th scope="col">Nome</th>
               <th scope="col">Autor</th>
               <th scope="col">Editora</th>
+              <th scope="col">Lancamento</th>
               <th scope="col">Categoria</th>
               <th scope="col">Ações</th>
             </tr>
             </thead>
             <tbody>
+                 {% for livro in livros %}
+                    <tr>
+                        <td>{{ livro.id }}</td>
+                        <td>{{ livro.nome }}</td>
+                        <td>{{ livro.autor }}</td>
+                        <td>{{ livro.editora }}</td>
+                        <td>{{ livro.lancamento }}</td>
+                        <td>{{ livro.categoria.nome }}</td>
+                        <td>
+                              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
+                              <button type="button" class="btn btn-sm btn-danger">Remver</button>
+                         </td>
+                    </tr>
+                {% endfor %}
             <tr>
-              <th scope="row">1</th>
-              <td>O mundo linux</td>
-              <td>Paulo de Feitas</td>
-              <td>Saraiva</td>
-              <td>Informatica</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
-                <button type="button" class="btn btn-sm btn-danger">Remver</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>O sucesso de uma boiada</td>
-              <td>José de melo</td>
-              <td>Globo</td>
-              <td>Animais</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
-                <button type="button" class="btn btn-sm btn-danger">Remver</button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>O amor é lindo</td>
-              <td>Maria Alves</td>
-              <td>Globo</td>
-              <td>Romances</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastrolivro">Editar</button>
-                <button type="button" class="btn btn-sm btn-danger">Remver</button>
-              </td>
-            </tr>
             </tbody>
           </table>
         </div>
