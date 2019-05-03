@@ -1,53 +1,68 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        {% block title %}  <title> Biblioteca Unidesc </title>  {% endblock title %}
 
-  <!-- Custom fonts for this template -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.css' %}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Font-awesome -->
+        <link href="{% static 'vendor/fontawesome-free/css/all.css' %}" rel="stylesheet" type="text/css">
+        <!-- dataTables -->
+        <link href="{% static 'datatables/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
-  <!-- Plugin CSS -->
-  <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    </head>
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+    <body>
+        <div class="container">
+            {% include 'core/navbar.html' %}
 
-  <title>Biblioteca Unidesc</title>
+            {% block content %}
 
-</head>
+            {% endblock %}
 
-<body>
-    <div class="container">
+            {% include 'core/footer.html' %}
+        </div>
 
-        {% block main %}{% endblock %}
-    </div>
 
-    <script type="javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-      <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Plugin JavaScript -->
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    {#  <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>#}
 
-  <!-- Plugin JavaScript -->
-  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Contact Form JavaScript -->
+    {#  <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>#}
+    {#  <script src="{% static 'js/contact_me.js' %}"></script>#}
 
-  <!-- Contact Form JavaScript -->
-  <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
-  <script src="{% static 'js/contact_me.js' %}"></script>
+    <!-- Custom scripts for this template -->
+    {#  <script src="{% static 'js/freelancer.min.js' %}"></script>#}
 
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'js/freelancer.min.js' %}"></script>
+        <!-- datatable -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'datatables/js/jquery-3.4.0.min.js' %}"></script>
+        <script src="{% static 'datatables/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'datatables/js/dataTables.bootstrap4.min.js' %}"></script>
 
-</body>
+        {% block jsSetup %}
+            <script src="{% static 'js/jsSetupAjax.js' %}"></script>
+        {% endblock %}
+
+        {% block js %}
+
+        {% endblock %}
+    </body>
 </html>
