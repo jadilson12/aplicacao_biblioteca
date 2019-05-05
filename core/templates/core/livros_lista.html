@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load bootstrap %}
+
+{% block content %}
+<section class="livros" id="portfolio">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-3 mr-auto">
+                    Lista de livros
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadastroCategoria" >Add nova Cageroria</button>
+                    <button  type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_cadastro"  >Add novo livro</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            {% if livros %}
+                <table id="tabela_livros" class="table table-hover">
+                <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Autor</th>
+                      <th scope="col">Editora</th>
+                      <th scope="col">Lancamento</th>
+                      <th scope="col">Categoria</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            {% else %}
+                  <p class="alert alert-warning text-center">A lista está vazia</p>
+            {% endif %}
+        </div>
+     </div>
+</section>
+
+{##}
+{#    <!--  Edit-->#}
+{#  <div class="modal fade"  tabindex="-1" role="dialog" id="modal_livro_edit" >#}
+{#    <div class="modal-dialog" role="document">#}
+{#      <div class="modal-content">#}
+{#          <div class="modal-header">#}
+{#            <h3 class="modal-title">Atualizar de livro</h3>#}
+{#          <button type="button" class="close" data-dismiss="modal"  aria-label="Fechar">#}
+{#            <span aria-hidden="true">&times;</span>#}
+{#          </button>#}
+{#        </div>#}
+{#        <div class="modal-body">#}
+{#          <form id="form_livro_edit" method="PUT" action="{% url 'livroApiDetail' 175%}"   data-urlredirect="{% url 'core_livros' %}" >#}
+{##}
+{#            <!-- Não vai usar isso por iremos usar o ajax:-->#}
+{#            {% csrf_token %}#}
+{##}
+{#            <div class="row">#}
+{#               <div class="col-sm-12">#}
+{#                    {{ form.nome|bootstrap }}#}
+{#               </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#               <div class="col-sm-12">#}
+{#                    {{ form.autor|bootstrap }}#}
+{#               </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#               <div class="col-sm-12">#}
+{#                    {{ form.lancamento|bootstrap }}#}
+{#               </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col-sm-6">#}
+{#                    {{ form.editora|bootstrap }}#}
+{#                </div>#}
+{#                <div class="col-sm-6">#}
+{#                    {{ form.categoria|bootstrap }}#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#               <div class="col-sm-12">#}
+{#                    {{ form.resumo|bootstrap }}#}
+{#               </div>#}
+{#            </div>#}
+{#              <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Fechar</button>#}
+{#            <button type="submit" class="btn btn-primary">Atualizar</button>#}
+{#          </form>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+
+    <!--  Cadastro-->
+  <div class="modal fade"  tabindex="-1" role="dialog" id="modal_cadastro" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Cadastro de livro</h3>
+          <button type="button" class="close" data-dismiss="modal"  aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="form_livro" method="post" action="{% url 'livro_store' %}" data-urlredirect="{% url 'core_livros' %}" >
+
+            <!-- Não vai usar isso por iremos usar o ajax:-->
+{#            {% csrf_token %}#}
+
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.nome|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.autor|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.lancamento|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.editora|bootstrap }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form.categoria|bootstrap }}
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.resumo|bootstrap }}
+               </div>
+            </div>
+              <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar livro</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Confirmar o Delete -->
+<div id="modal-customer-delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Confirmar</h4>
+      </div>
+        <form id="form-delete" action="." data-id="" data-url="" method="POST">
+          <div class="modal-body">
+              {% csrf_token %}
+              Você quer deletar "<span></span>"?
+          </div>
+            <input value="sim" type="hidden" id="id">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              <a type="submit" class="btn btn-danger" value="Deletar" /></a>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+  <script src="{% static 'js/livros.js' %}"></script>
+  <script>
+    $(function () {
+      $('#tabela_livros').dataTable({
+          ajax: {
+          processing: true,
+          url: "{% url 'livrosApiList' %}",
+          dataSrc: "" },
+          columns: [
+              { data: "id" },
+              { data: "nome" },
+              { data: "autor" },
+              { data: "editora" },
+              { data: "lancamento" },
+              { data: "categoria" },
+          {
+            data: null,
+            className: "center",
+            render: function(data, type, full, meta) {
+                btn = [
+                    '<button class="btn btn-sm btn-primary" onclick="editar(' + data.id + ')" data-url="' + '/api/livros/' + data.id  + ' data-toggle="modal" data-target="#modal_livro_edit">Editar</button>' +
+                    '<button class="btn btn-sm btn-danger" onclick="remover(' + data.id + ')"  data-url="' + '/api/livros/' + data.id  + '">Delete</button>'
+                ];
+
+             return   btn
+           }
+          },
+        ],
+        createdRow: function (row, data, index) {
+          $(row).addClass('tr-livro');
+         }
+      });
+     });
+
+  </script>
+
+{% endblock %}

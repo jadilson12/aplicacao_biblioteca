@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+  <div class="modal fade"  tabindex="-1" role="dialog" id="modal_cadastro" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Cadastro de livro</h3>
+          <button type="button" class="close" data-dismiss="modal"  aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="form_livro" method="post" >
+             {% csrf_token %}
+            <input type="hidden" id="id" class="form-control">
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.nome|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.autor|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.lancamento|bootstrap }}
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.editora|bootstrap }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form.categoria|bootstrap }}
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-sm-12">
+                    {{ form.resumo|bootstrap }}
+               </div>
+            </div>
+              <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{#  <form id="meuform" class="form-horizontal col-sm-4 col-lg-4" method="POST">#}
+{#    <legend>Cadastrar</legend>#}
+{#    <!-- if this form is sent only via ajax you don't need this:#}
+{#    {% csrf_token %}#}
+{#    -->#}
+{##}
+{#    <div class="form-group">#}
+{#      <label for="id_name">Nome</label>#}
+{#      <input type="text" id="id_name" name="name" class="form-control" value="Regis">#}
+{#    </div>#}
+{##}
+{#    <div class="form-group">#}
+{#      <label for="id_email">e-mail</label>#}
+{#      <input type="text" id="id_email" name="email" class="form-control" value="regis@example.com">#}
+{#    </div>#}
+{##}
+{#    <div class="form-group">#}
+{#      <div class="col-sm-10 col-sm-offset-2">#}
+{#      <button type="submit" id="id_submit" class="btn btn-primary">Salvar</button>#}
+{#      </div>#}
+{#    </div>#}
+{#  </form>#}
+
+{% block js %}
+  <script type="text/javascript" src="{% static 'js/livros.js' %}"></script>
+{% endblock js %}
