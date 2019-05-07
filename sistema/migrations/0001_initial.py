@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('autor', models.CharField(max_length=50)),
                 ('editora', models.CharField(max_length=50)),
                 ('lancamento', models.DateField()),
-                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.Categoria')),
+                ('categoria', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sistema.Categoria')),
             ],
         ),
     ]

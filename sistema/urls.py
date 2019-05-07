@@ -1,9 +1,9 @@
 from django.urls import path
-from core import views as v
+from sistema import views as v
 
 urlpatterns = [
-    path('', v.home, name='core_home'),
-    path('livros/', v.lista_livro, name='core_livros'),
+    path('', v.home, name='sistema_home'),
+    path('livros/', v.lista_livro, name='sistema_livros'),
 
     # api
     path('api/livros', v.livroApiList, name='livrosApiList'),

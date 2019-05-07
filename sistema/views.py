@@ -3,20 +3,21 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-from core.forms import LivroForm
-from core.models import Livro
-from core.serializers import LivroSerializer
+
+from sistema.forms import LivroForm
+from sistema.models import Livro
+from sistema.serializers import LivroSerializer
 
 
 def home(resquest):
-    return render(resquest, 'core/index.html')
+    return render(resquest, 'sistema/index.html')
 
 
 def lista_livro(request):
     livros = Livro.objects.all()
     form = LivroForm()
     data = {'livros': livros, 'form': form}
-    return render(request, 'core/livros_lista.html', data)
+    return render(request, 'sistema/livros_lista.html', data)
 
 
 class JSONResponse(HttpResponse):
@@ -139,3 +140,4 @@ def livro_update(request, id):
     else:
         response = ''
         return JsonResponse(response, )
+
