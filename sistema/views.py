@@ -1,11 +1,11 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-
-from sistema.forms import LivroForm
-from sistema.models import Livro
+from sistema.forms import LivroForm, CategoriaForm
+from sistema.models import Livro, Categoria
 from sistema.serializers import LivroSerializer
 
 
@@ -58,7 +58,6 @@ def livroApiList(request):
 
 @csrf_exempt
 def livro_store(request):
-
     """
     Salvar livro usando api
 
@@ -141,3 +140,76 @@ def livro_update(request, id):
         response = ''
         return JsonResponse(response, )
 
+
+def categoria_list(request):
+    categorias = Categoria.objects.all()
+    data = {'categorias': categorias}
+    return render(request, 'sistema/categoria_list.html', data)
+
+
+def categoria_create(request):
+    form = CategoriaForm(request.POST)
+    if not request.method == 'POST':
+        form = CategoriaForm()
+    return categoria_store(request, form, 'sistema/categoria_create.html')
+
+
+def categoria_store(request, form, template_name):
+
+    # Cria um dicionário  para enviar para json
+    data = dict()
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            # enviar um feedback para notificar ao usuario
+            data['form_is_valid'] = True
+            categorias = Categoria.objects.all()
+
+            # adiciona as tr da lista para dicionário
+            data['categoria_list'] = render_to_string('sistema/categoria_list_tr.html', {'categorias': categorias})
+        else:
+            # enviar um feedback para notificar ao usuario
+            data['form_is_valid'] = False
+
+    # adiciona form validadado ou não
+    context = {'form': form}
+
+    # retorna para front o novo lista atualizada
+    data['html_form'] = render_to_string(template_name, context, request=request)
+    return JsonResponse(data)
+
+
+def categoria_update(request, id):
+
+    # Localiza o objeto a ser atualizado
+    categoria = get_object_or_404(Categoria, id=id)
+    if request.method == 'POST':
+        # atualiza
+        form = CategoriaForm(request.POST, instance=categoria)
+    else:
+        # Não atualiza
+        form = CategoriaForm(instance=categoria)
+    return categoria_store(request, form, 'sistema/categoria_update.html')
+
+
+def categoria_delete(request, id):
+    data = dict()
+
+    # Localiza o objeto a ser excluido
+    categoria = get_object_or_404(Categoria, id=id)
+    if request.method == "POST":
+        categoria.delete()
+        # enviar um feedback para notificar ao usuario
+        data['form_is_valid'] = True
+
+        categorias = Categoria.objects.all()
+
+        # retorna para front o novo lista atualizada
+        data['categoria_list'] = render_to_string('sistema/categoria_list_tr.html', {'categorias': categorias})
+    else:
+        context = {'categoria': categoria}
+        data['html_form'] = render_to_string('sistema/categoria_delete.html', context, request=request)
+
+    return JsonResponse(data)

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="livros" id="portfolio">
+        <button class="btn btn-primary show-form" data-url="{% url 'categoria_create' %}"> Nova categoria</button>
+    <table class="table" id="table-categoria">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% include "sistema/categoria_list_tr.html" %}
+
+        </tbody>
+    </table>
+    <div class="modal fade" id="modal-categoria">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}
+
+{% block js %}
+       <script src="{% static '/js/page/categoria.js' %}"></script>
+{% endblock %}
