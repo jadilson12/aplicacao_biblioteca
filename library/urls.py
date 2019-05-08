@@ -1,9 +1,9 @@
 from django.urls import path
-from sistema import views as v
+from library import views as v
 
 urlpatterns = [
-    path('', v.home, name='sistema_home'),
-    path('livros/', v.lista_livro, name='sistema_livros'),
+    path('', v.home, name='home'),
+    path('livros/', v.lista_livro, name='livros_list'),
 
     # api
     path('api/livros', v.livroApiList, name='livrosApiList'),

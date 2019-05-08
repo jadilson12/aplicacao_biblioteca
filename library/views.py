@@ -4,20 +4,20 @@ from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-from sistema.forms import LivroForm, CategoriaForm
-from sistema.models import Livro, Categoria
-from sistema.serializers import LivroSerializer
+from .forms import LivroForm, CategoriaForm
+from .models import Livro, Categoria
+from .serializers import LivroSerializer
 
 
-def home(resquest):
-    return render(resquest, 'sistema/index.html')
+def home(resquest): 
+    return render(resquest, 'index.html')
 
 
 def lista_livro(request):
     livros = Livro.objects.all()
     form = LivroForm()
     data = {'livros': livros, 'form': form}
-    return render(request, 'sistema/livros_lista.html', data)
+    return render(request, 'livros_lista.html', data)
 
 
 class JSONResponse(HttpResponse):
@@ -144,14 +144,14 @@ def livro_update(request, id):
 def categoria_list(request):
     categorias = Categoria.objects.all()
     data = {'categorias': categorias}
-    return render(request, 'sistema/categoria_list.html', data)
+    return render(request, 'categoria_list.html', data)
 
 
 def categoria_create(request):
     form = CategoriaForm(request.POST)
     if not request.method == 'POST':
         form = CategoriaForm()
-    return categoria_store(request, form, 'sistema/categoria_create.html')
+    return categoria_store(request, form, 'categoria_create.html')
 
 
 def categoria_store(request, form, template_name):
@@ -168,7 +168,7 @@ def categoria_store(request, form, template_name):
             categorias = Categoria.objects.all()
 
             # adiciona as tr da lista para dicionário
-            data['categoria_list'] = render_to_string('sistema/categoria_list_tr.html', {'categorias': categorias})
+            data['categoria_list'] = render_to_string('categoria_list_tr.html', {'categorias': categorias})
         else:
             # enviar um feedback para notificar ao usuario
             data['form_is_valid'] = False
@@ -191,7 +191,7 @@ def categoria_update(request, id):
     else:
         # Não atualiza
         form = CategoriaForm(instance=categoria)
-    return categoria_store(request, form, 'sistema/categoria_update.html')
+    return categoria_store(request, form, 'categoria_update.html')
 
 
 def categoria_delete(request, id):
@@ -207,9 +207,9 @@ def categoria_delete(request, id):
         categorias = Categoria.objects.all()
 
         # retorna para front o novo lista atualizada
-        data['categoria_list'] = render_to_string('sistema/categoria_list_tr.html', {'categorias': categorias})
+        data['categoria_list'] = render_to_string('categoria_list_tr.html', {'categorias': categorias})
     else:
         context = {'categoria': categoria}
-        data['html_form'] = render_to_string('sistema/categoria_delete.html', context, request=request)
+        data['html_form'] = render_to_string('categoria_delete.html', context, request=request)
 
     return JsonResponse(data)

@@ -105,7 +105,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="form_livro" method="post" action="{% url 'livros_store' %}" data-urlredirect="{% url 'sistema_livros' %}" >
+          <form id="form_livro" method="post" action="{% url 'livros_store' %}" data-urlredirect="{% url 'livros_list' %}" >
 
             <!-- Não vai usar isso por iremos usar o ajax:-->
 {#            {% csrf_token %}#}
