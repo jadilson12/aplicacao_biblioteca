@@ -1,14 +1,14 @@
 from django.forms import ModelForm
-from .models import Categoria, Livro
+from .models import Category, Book
 
 
-class CategoriaForm(ModelForm):
+class CategoryForm(ModelForm):
     class Meta:
-        model = Categoria
+        model = Category
         fields = '__all__'
 
 
-class LivroForm(ModelForm):
+class BookForm(ModelForm):
     class Meta:
-        model = Livro
+        model = Book
         fields = '__all__'
