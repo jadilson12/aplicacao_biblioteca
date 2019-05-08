@@ -1,26 +1,55 @@
 from django.shortcuts import render
-from library.services import categoria_services
+from library.services import (
+    category_services,
+    book_services
+)
 
 
-def home(resquest):
+def page_home(resquest):
     return render(resquest, 'index.html')
 
 
-def categoria_list(request):
-    data = categoria_services.list(request)
+def page_book(resquest):
+    return render(resquest, 'livros_lista.html')
+
+
+# Category
+def category_list(request):
+    data = category_services.list(request)
     return data
 
 
-def categoria_create(request):
-    data = categoria_services.create(request)
+def category_create(request):
+    data = category_services.create(request)
     return data
 
 
-def categoria_update(request, id):
-    data = categoria_services.update(request, id)
+def category_update(request, id):
+    data = category_services.update(request, id)
     return data
 
 
-def categoria_delete(request, id):
-    data = categoria_services.delete(request, id)
+def category_delete(request, id):
+    data = category_services.delete(request, id)
+    return data
+
+
+# book
+def book_list(request):
+    data = book_services.list(request)
+    return data
+
+
+def book_create(request):
+    data = book_services.create(request)
+    return data
+
+
+def book_update(request, id):
+    data = book_services.update(request, id)
+    return data
+
+
+def book_delete(request, id):
+    data = book_services.delete(request, id)
     return data
