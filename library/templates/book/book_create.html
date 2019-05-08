@@ -1,10 +1,10 @@
 {% load bootstrap %}
 
-<form method="post" data-url="{% url 'categoria_create' %}" class="create-form">
-    <!-- Isso não é nescessario porque usamos ajax-->
-    <!--     {% csrf_token %} -->
+<form method="post" data-url="{% url 'book.create' %}" class="create-form">
+
+    {% csrf_token %}
     <div class="modal-header">
-        <h5 class="modal-title" >Criar categoria</h5>
+        <h5 class="modal-title" >Adicionar livro</h5>
     </div>
         <div class="modal-body">
         {{form|bootstrap}}

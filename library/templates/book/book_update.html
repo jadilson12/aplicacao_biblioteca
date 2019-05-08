@@ -1,11 +1,10 @@
 {% load bootstrap %}
 
-<form method="post" data-url="{% url 'categoria_update' form.instance.id %}" class="update-form">
+<form method="post" data-url="{% url 'book.update' form.instance.id %}" class="update-form">
 
-    <!-- Isso não é nescessario porque usamos ajax-->
-    <!--     {% csrf_token %} -->
+    {% csrf_token %}
     <div class="modal-header">
-        <h5 class="modal-title" >Atualização da categoria</h5>
+        <h5 class="modal-title" >Atualização da livro</h5>
     </div>
     <div class="modal-body">
         {{form|bootstrap}}

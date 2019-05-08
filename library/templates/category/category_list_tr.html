@@ -1,0 +1,19 @@
+{% for category in categories %}
+  <tr>
+    <td>{{ category.id }}</td>
+    <td>{{ category.name }}</td>
+    <td>
+      <button class="btn btn-sm btn-primary show-form-update" data-url="{% url 'category.update' category.id %}">
+      Edit
+      </button>
+      <button class="btn btn-sm btn-danger show-form-delete"  data-url="{% url 'category.delete' category.id %}">
+      Delete
+      </button>
+    </td>
+  </tr>
+{% empty %}
+
+        <p class="alert alert-warning text-center">A lista está vazia</p>
+
+{% endfor %}
+

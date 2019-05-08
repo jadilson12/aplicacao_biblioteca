@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <section class="livros" id="portfolio">
+        <button class="btn btn-primary show-form" data-url="{% url 'book.create' %}"> Add livro</button>
+{#{% if books %}#}
+    <table class="table" id="table-book">
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Editora</th>
+          <th scope="col">Lancamento</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Ações</th>
+        </tr>
+    </thead>
+        <tbody>
+
+        {% include "book/book_list_tr.html" %}
+{#{% else %}#}
+
+{# <p class="alert alert-warning text-center">A lista está vazia</p>#}
+
+{#{% endif %}#}
+
+
+        </tbody>
+    </table>
+    <div class="modal fade" id="modal-book">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}
+
+{% block js %}
+       <script src="{% static '/js/page/book.js' %}"></script>
+{% endblock %}

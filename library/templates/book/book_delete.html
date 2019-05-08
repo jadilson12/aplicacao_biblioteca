@@ -1,0 +1,14 @@
+<form method="DELETE" data-url="{% url 'book.delete' books.id %}" class="delete-form">
+
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title" >Excluir livro</h5>
+    </div>
+    <div class="modal-body">
+        <p class="lead"> Voce tem certeza que excluir  <strong>{{books.title}}</strong></p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </div>
+</form>
