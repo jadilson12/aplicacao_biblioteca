@@ -7,9 +7,11 @@
   <!-- Header -->
   <header class="masthead bg-primary text-white text-center">
     <div class="container">
-      <img class="img-fluid mb-5 d-block mx-auto" src="{% static 'img/profile.png' %}" alt="">
+      <img class="img-fluid mb-5 d-block mx-auto"  style="width: 400px" src="{% static 'img/logo-booksfind.png' %}" alt="BooksFIND Logo">
       <h1 class="text-uppercase mb-0">Encontre seu livro favarito</h1>
-      <hr class="star-light">
+        <a href="{% url 'book.list' %}">
+            <button class="btn btn-warning m-3"><i class="fas fa-search"></i> BUSCAR</button>
+        </a>
       <h2 class="font-weight-light mb-0">Diversos categoria a sua disposição</h2>
     </div>
   </header>
