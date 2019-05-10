@@ -5,24 +5,14 @@
 {% block content %}
     <section class="livros" id="portfolio">
 
-        <div class="row m-2">
-            <div class="col-auto">
-                <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}"> Add livro</button>
-            </div>
-            <div class="col">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Ex: Aprendendo Linux" id="search"
-                           onkeyup="filter()">
-                </div>
-            </div>
-
+        <div class="m-3">
+            <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}">
+                <i class="fas fa-plus-square"></i> Add livro
+            </button>
         </div>
 
-        {#{% if books %}#}
-        <table class="table" id="table-book">
+        {% if books %}
+            <table class="table" id="table-book">
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -37,14 +27,14 @@
             <tbody>
 
             {% include "book/book_list_tr.html" %}
-            {#{% else %}#}
+        {% else %}
 
-            {# <p class="alert alert-warning text-center">A lista está vazia</p>#}
+            <p class="alert alert-warning text-center">A lista está vazia</p>
 
-            {#{% endif %}#}
+        {% endif %}
 
 
-            </tbody>
+        </tbody>
         </table>
         <div class="modal fade" id="modal-book">
             <div class="modal-dialog">
@@ -57,41 +47,9 @@
 
 {% block js %}
     <script>
-        function filter() {
-            $("#search").keyup(function () {
-                //split the current value of searchInput
-                var data = this.value.split(" ");
-                //create a jquery object of the rows
-                var jo = $("#table-book").find("tr");
-                if (this.value == "") {
-                    jo.show();
-                    return;
-                }
-                //hide all the rows
-                jo.hide();
-
-                //Recusively filter the jquery object to get results.
-                jo.filter(function (i, v) {
-                    var $t = $(this);
-                    for (var d = 0; d < data.length; ++d) {
-                        if ($t.is(":contains('" + data[d] + "')")) {
-                            return true;
-                        }
-                    }
-                    return false;
-                })
-                //show the rows that match.
-                    .show();
-            }).focus(function () {
-                this.value = "";
-                $(this).css({
-                    "color": "black"
-                });
-                $(this).unbind('focus');
-            }).css({
-                "color": "#0073e9"
-            });
-        }
+        $(document).ready(function () {
+            $('#table-book').DataTable();
+        });
     </script>
 
     <script src="{% static '/js/page/book.js' %}"></script>
