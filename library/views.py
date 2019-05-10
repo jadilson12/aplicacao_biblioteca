@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from library.services import (
     category_services,
@@ -19,16 +20,19 @@ def category_list(request):
     return data
 
 
+@login_required
 def category_create(request):
     data = category_services.create(request)
     return data
 
 
+@login_required
 def category_update(request, id):
     data = category_services.update(request, id)
     return data
 
 
+@login_required
 def category_delete(request, id):
     data = category_services.delete(request, id)
     return data
@@ -40,16 +44,19 @@ def book_list(request):
     return data
 
 
+@login_required
 def book_create(request):
     data = book_services.create(request)
     return data
 
 
+@login_required
 def book_update(request, id):
     data = book_services.update(request, id)
     return data
 
 
+@login_required
 def book_delete(request, id):
     data = book_services.delete(request, id)
     return data

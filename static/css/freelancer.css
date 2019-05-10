@@ -142,8 +142,8 @@ section h2 {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
   }
@@ -173,8 +173,8 @@ section h2 {
 }
 
 header.masthead {
-  padding-top: calc(6rem + 72px);
-  padding-bottom: 6rem;
+  padding-top: calc(1rem + 45px);
+  padding-bottom: 3rem;
 }
 
 header.masthead h1 {
@@ -189,8 +189,8 @@ header.masthead h2 {
 
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: calc(6rem + 106px);
-    padding-bottom: 6rem;
+    padding-top: calc(3rem + 30px);
+    padding-bottom: 3rem;
   }
   header.masthead h1 {
     font-size: 4.75em;
@@ -381,4 +381,8 @@ a:focus, a:hover, a:active {
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: #1a252f;
   border-color: #1a252f;
+}
+
+.form-login{
+  margin-top: 90px;
 }
