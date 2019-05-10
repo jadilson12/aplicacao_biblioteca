@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, DateInput
 from .models import Category, Book
 
 
@@ -12,3 +12,6 @@ class BookForm(ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
+        widgets = {
+            'publication_date': DateInput(attrs={'type': 'date'})
+        }
