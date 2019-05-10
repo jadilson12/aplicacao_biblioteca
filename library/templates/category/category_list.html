@@ -4,30 +4,39 @@
 
 {% block content %}
     <section class="livros" id="portfolio">
-        <button class="btn btn-primary show-form" data-url="{% url 'category.create' %}"> Nova categoria</button>
-    <table class="table" id="table-category">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Categoria</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
+        <div class="m-3">
+            <button class="btn btn-primary show-form" data-url="{% url 'category.create' %}">
+                <i class="fas fa-plus-square"></i> Nova categoria
+            </button>
+        </div>
+        <table class="table" id="table-category">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
 
             {% include "category/category_list_tr.html" %}
 
-        </tbody>
-    </table>
-    <div class="modal fade" id="modal-category">
-        <div class="modal-dialog">
-         <div class="modal-content"></div>
+            </tbody>
+        </table>
+        <div class="modal fade" id="modal-category">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
         </div>
-    </div>
     </section>
 
 {% endblock %}
 
 {% block js %}
-       <script src="{% static '/js/page/category.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table-category').DataTable();
+        });
+    </script>
+    <script src="{% static '/js/page/category.js' %}"></script>
 {% endblock %}
