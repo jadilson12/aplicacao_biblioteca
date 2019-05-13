@@ -1,16 +1,25 @@
 {% load bootstrap %}
 
 <form method="post" data-url="{% url 'category.create' %}" class="create-form">
-    <!-- Isso não é nescessario porque usamos ajax-->
-    <!--     {% csrf_token %} -->
+{#    <!-- Isso não é nescessario porque usamos ajax-->#}
+{#    <!--     {% csrf_token %} -->#}
     <div class="modal-header">
-        <h5 class="modal-title" >Criar categoria</h5>
+        <h5 class="modal-title">Create Category</h5>
     </div>
-        <div class="modal-body">
-        {{form|bootstrap}}
+    <div class="modal-body">
+        {# {{form|bootstrap}}#}
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-quote-right"></i></div>
+            </div>
+            <input type="text" class="form-control" name="name" placeholder="Category" maxlength="40" required>
         </div>
+
+
+    </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
