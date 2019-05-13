@@ -16,6 +16,9 @@ urlpatterns = [
     path('categoria/', v.category_list, name='category.list'),
     path('categoria/criar', v.category_create, name='category.create'),
     path('categoria/atualizar/<int:id>', v.category_update, name='category.update'),
-    path('categoria/excluir/<int:id>', v.category_delete, name='category.delete')
+    path('categoria/excluir/<int:id>', v.category_delete, name='category.delete'),
+
+    # user
+    path('signup/', v.signup, name='signup'),
 
 ]
