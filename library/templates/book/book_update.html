@@ -4,13 +4,57 @@
 
     {% csrf_token %}
     <div class="modal-header">
-        <h5 class="modal-title" >Atualização da livro</h5>
+        <h5 class="modal-title">Update Book</h5>
     </div>
     <div class="modal-body">
-        {{form|bootstrap}}
+{#        {{form|bootstrap}}#}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-heading"></i></div>
+            </div>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Title" maxlength="50"
+                   value="{{ form.title.value }}" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-at"></i></div>
+            </div>
+            <input type="text" class="form-control" name="author" placeholder="Author" maxlength="50"
+                   value="{{ form.author.value }}" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-swatchbook"></i></div>
+            </div>
+            <input type="text" class="form-control" name="pages" placeholder="Pages" maxlength="50"
+                   value="{{ form.pages.value }}" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-quote-right"></i></div>
+            </div>
+            <input type="date" class="form-control" name="publication_date"
+                   value="{{ form.publication_date.value|date:"Y-m-d" }}" required>
+        </div>
+
+        <div class="mb-3">
+            {{ form.category|bootstrap }}
+        </div>
+
+        <label for="summary" class="control-label">Resume Book</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-book-open"></i></div>
+            </div>
+            <textarea type="date" class="form-control" name="summary" id="summary" rows="3" required>{{ form.summary.value }}</textarea>
+        </div>
+
     </div>
     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      <button type="submit" class="btn btn-primary">Atualizar</button>
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>

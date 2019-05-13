@@ -7,7 +7,7 @@
 
         <div class="m-3">
             <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}">
-                <i class="fas fa-plus-square"></i> Add livro
+                <i class="fas fa-plus-square"></i> Add Book
             </button>
         </div>
 
@@ -16,12 +16,12 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Autor</th>
-                <th scope="col">Páginas</th>
-                <th scope="col">Lancamento</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Ações</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Page</th>
+                <th scope="col">Publication Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
             {% include "book/book_list_tr.html" %}
         {% else %}
 
-            <p class="alert alert-warning text-center">A lista está vazia</p>
+            <p class="alert alert-warning text-center">The list is empty</p>
 
         {% endif %}
 

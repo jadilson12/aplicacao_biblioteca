@@ -5,13 +5,19 @@
     <!-- Isso não é nescessario porque usamos ajax-->
     <!--     {% csrf_token %} -->
     <div class="modal-header">
-        <h5 class="modal-title" >Atualização da categoria</h5>
+        <h5 class="modal-title">Update Category</h5>
     </div>
     <div class="modal-body">
-        {{form|bootstrap}}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-quote-right"></i></div>
+            </div>
+            <input type="text" class="form-control" name="name" placeholder="Category" maxlength="40"
+                   value="{{ form.name.value }}" required>
+        </div>
     </div>
     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-      <button type="submit" class="btn btn-primary">Atualizar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>

@@ -4,86 +4,92 @@
 
 {% block content %}
 
-  <!-- Header -->
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container">
-      <img class="img-fluid mb-5 d-block mx-auto"  style="width: 400px" src="{% static 'img/logo-booksfind.png' %}" alt="BooksFIND Logo">
-      <h1 class="text-uppercase mb-0">Encontre seu livro favarito</h1>
-        <a href="{% url 'book.list' %}">
-            <button class="btn btn-warning m-3"><i class="fas fa-search"></i> BUSCAR</button>
-        </a>
-      <h2 class="font-weight-light mb-0">Diversos categoria a sua disposição</h2>
-    </div>
-  </header>
-
-  <!-- Destaque Grid Section -->
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/1.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 1</p>
-                <p class="card-text">view: 7347</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/2.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 2</p>
-                <p class="card-text">view: 64347</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/3.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 3</p>
-                <p class="card-text">view: 7347</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/3.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 4</p>
-                <p class="card-text">view: 7647</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/3.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 5</p>
-                <p class="card-text">view: 4347</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card mb-2 shadow-sm">
-              <img class="card-img-top figure-img img-fluid rounded" src="{% static 'img/livros/3.jpg' %}">
-              <div class="card-body">
-                <p class="card-text">Tilulo 6</p>
-                <p class="card-text">view: 7647</p>
-                <button class="btn btn-sm btn-secondary">Veja mais</button>
-              </div>
-            </div>
-          </div>
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container">
+            <img class="img-fluid mb-5 d-block mx-auto" style="width: 400px" src="{% static 'img/logo-booksfind.png' %}"
+                 alt="BooksFIND Logo">
+            <h1 class="text-uppercase mb-0">Find your favorite book</h1>
+            <a href="{% url 'book.list' %}">
+                <button class="btn btn-warning m-3"><i class="fas fa-search"></i> SEARCH</button>
+            </a>
+            <h2 class="font-weight-light mb-0">Various category at your disposal</h2>
         </div>
-      </div>
+    </header>
+
+    <!-- Destaque Grid Section -->
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/1.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 1</p>
+                            <p class="card-text">view: 7347</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/2.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 2</p>
+                            <p class="card-text">view: 64347</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/3.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 3</p>
+                            <p class="card-text">view: 7347</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/3.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 4</p>
+                            <p class="card-text">view: 7647</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/3.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 5</p>
+                            <p class="card-text">view: 4347</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card mb-2 shadow-sm">
+                        <img class="card-img-top figure-img img-fluid rounded"
+                             src="{% static 'img/livros/3.jpg' %}">
+                        <div class="card-body">
+                            <p class="card-text">Tilulo 6</p>
+                            <p class="card-text">view: 7647</p>
+                            <button class="btn btn-sm btn-secondary">Veja mais</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
 {% endblock %}
 

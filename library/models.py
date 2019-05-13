@@ -14,7 +14,7 @@ class Book(models.Model):
     pages = models.CharField(max_length=50)
     publication_date = models.DateField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    summary = models.CharField(max_length=300)
+    summary = models.TextField(max_length=100)
 
     def __str__(self):
         return self.title + ' - ' + self.author
