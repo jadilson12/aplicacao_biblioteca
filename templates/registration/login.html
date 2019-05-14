@@ -30,7 +30,9 @@
                     <td>{{ form.password|bootstrap }}</td>
                 </tr>
             </table>
-
+            <div>
+                <a href="{% url 'signup' %}">Create an account</a>
+            </div>
             <input type="submit" class="btn btn-primary" value="Login">
             <input type="hidden" name="next" value="{{ next }}">
         </form>
