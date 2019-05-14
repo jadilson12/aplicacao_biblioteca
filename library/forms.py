@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.forms import ModelForm, DateInput, forms
+from django.forms import ModelForm, DateInput
 from .models import Category, Book
 from django import forms
 
@@ -21,8 +21,16 @@ class BookForm(ModelForm):
 
 
 class SignUpForm(UserCreationForm):
-    birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
+    cpf = forms.IntegerField(help_text='Required')
+    registration_id = forms.IntegerField(help_text='Required')
+    phone = forms.IntegerField(help_text='Required')
 
     class Meta:
         model = User
-        fields = ('username', 'birth_date', 'password1', 'password2', )
+        fields = ('username', 'email', 'cpf', 'phone', 'registration_id', 'password1', 'password2',)
+        # fields = ('username', 'password1', 'email', 'password2')
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Paul'}),
+            'email': forms.TextInput(attrs={'placeholder': 'youname@gmail.com'}),
+        }
+

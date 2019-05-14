@@ -66,3 +66,7 @@ def book_delete(request, id):
 def signup(request):
     data = user_services.signup(request)
     return data
+
+
+def profile(resquest):
+    return render(resquest, 'student/profile.html')

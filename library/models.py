@@ -25,9 +25,10 @@ class Book(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
+    bio = models.TextField(max_length=500, null=True, blank=True)
+    cpf = models.IntegerField(null=True, blank=True)
+    phone = models.IntegerField(null=True, blank=True)
+    registration_id = models.IntegerField(null=True, blank=True)
 
 
 @receiver(post_save, sender=User)

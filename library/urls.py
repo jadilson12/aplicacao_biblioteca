@@ -20,5 +20,6 @@ urlpatterns = [
 
     # user
     path('signup/', v.signup, name='signup'),
+    path('profile/', v.profile, name='profile'),
 
 ]
