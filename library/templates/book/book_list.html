@@ -3,13 +3,16 @@
 {% load static %}
 
 {% block content %}
+
     <section class="livros" id="portfolio">
 
-        <div class="m-3">
-            <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}">
-                <i class="fas fa-plus-square"></i> Add Book
-            </button>
-        </div>
+        {% if user.is_superuser %}
+            <div class="m-3">
+                <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}">
+                    <i class="fas fa-plus-square"></i> Add Book
+                </button>
+            </div>
+        {% endif %}
 
         {% if books %}
             <table class="table" id="table-book">
