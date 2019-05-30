@@ -18,10 +18,14 @@ class Book(models.Model):
     publication_date = models.DateField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     summary = models.TextField(max_length=100)
-    cover = models.ImageField(upload_to='book/cover')
+    cover = models.ImageField(upload_to='book/cover/', null=True, blank=True)
 
     def __str__(self):
         return self.title + ' - ' + self.author
+
+    def delete(self, *args, **kwargs):
+        self.cover.delete()
+        super().delete(*args, **kwargs)
 
 
 class Profile(models.Model):
