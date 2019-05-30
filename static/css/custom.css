@@ -1,3 +1,11 @@
 .mt-10p{
     margin-top: 10% !important;
 }
+.modal-custom {
+    position: relative;
+    display: table;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: auto;
+    min-width: 900px;
+}

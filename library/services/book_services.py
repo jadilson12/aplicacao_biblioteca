@@ -6,7 +6,8 @@ from library.models import *
 def list(request):
     books = Book.objects.all()
     form = BookForm()
-    data = {'books': books, 'form': form}
+    category = Category.objects.all()
+    data = {'books': books, 'form': form, 'category': category}
     return render(request, 'book/book_list.html', data)
 
 

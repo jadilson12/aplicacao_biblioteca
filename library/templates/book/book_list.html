@@ -7,41 +7,101 @@
     <section class="livros" id="portfolio">
 
         {% if user.is_superuser %}
-            <div class="m-3">
-                <button class="btn btn-primary show-form " data-url="{% url 'book.create' %}">
+            <div class="mt-3">
+                <button class="btn btn-primary"  data-toggle="modal" data-target="#modal-create">
                     <i class="fas fa-plus-square"></i> Add Book
                 </button>
             </div>
         {% endif %}
 
-        {% if books %}
+
+{#                    <!-- Destaque Grid Section -->#}
+{#            <div class="album bg-light">#}
+{#                <div class="row">#}
+{#                    {% for book in books %}#}
+{#                        <div class="col-md-2">#}
+{#                            <div class="card">#}
+{#                                {% if book.cover %}#}
+{#                                    <img class="card-img-top figure-img img-fluid rounded"#}
+{#                                         src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100%;">#}
+{#                                {% else %}#}
+{#                                    <span class="text-muted">No cover</span>#}
+{#                                        <img class="card-img-top figure-img img-fluid rounded"#}
+{#                                         src="/media/book/cover/no_cover.jpg" alt="No Cover" style="width:100px;">#}
+{#                                {% endif %}#}
+{##}
+{#                                <div class="card-body">#}
+{#                                    <span><b>Titulo: </b><i>author</i></span>#}
+{#                                    <span>Titulo: {{ book.title }}</span>#}
+{#                                    <p>Author: {{ book.author }}</p>#}
+{#                                    <p>view: 7647</p>#}
+{#                                    <button class="btn btn-sm btn-secondary">Veja mais</button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+
+    <hr>
+
             <table class="table" id="table-book">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Page</th>
-                <th scope="col">Publication Date</th>
-                <th scope="col">Category</th>
-                <th scope="col">Actions</th>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Page</th>
+                <th>Publication Date</th>
+                <th>Category</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
 
-            {% include "book/book_list_tr.html" %}
-        {% else %}
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.pages }}</td>
+                    <td>{{ book.publication_date }}</td>
+                    <td>{{ book.category }}</td>
+                    <td>
+                        {% if user.is_superuser %}
+                        <a class="btn btn-sm btn-primary"  href="{% url 'book.update' book.id %}">Edit</a>
+                        <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete"
+                            href="{% url 'book.delete' book.id %}" onclick="remove('{{ book.id }}')" >Delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
 
-            <p class="alert alert-warning text-center">The list is empty</p>
+{#            <p class="alert alert-warning text-center">The list is empty</p>#}
 
-        {% endif %}
 
 
         </tbody>
         </table>
-        <div class="modal fade" id="modal-book">
+        <div class="modal fade" id="modal-create">
+            <div class="modal-dialog modal-custom ">
+                <div class="modal-content justify-content-center">
+                      {% include "book/book_create.html" %}
+                </div>
+            </div>
+        </div>
+            <div class="modal fade" id="modal-update">
+                        <div class="modal-dialog modal-custom">
+                <div class="modal-content">
+                      {% include "book/book_update.html" %}
+                </div>
+            </div>
+        </div>
+            <div class="modal fade" id="modal-delete">
             <div class="modal-dialog">
-                <div class="modal-content"></div>
+                <div class="modal-content">
+                      {% include "book/book_delete.html" %}
+                </div>
             </div>
         </div>
     </section>
@@ -49,12 +109,16 @@
 {% endblock %}
 
 {% block js %}
-    <script>
+   <script>
         $(document).ready(function () {
             $('#table-book').DataTable();
         });
-    </script>
 
-    <script src="{% static '/js/page/book.js' %}"></script>
+
+     function remove(id){
+          $('#form-remove').attr('action', '/livros/excluir/' + id);
+     }
+
+    </script>
 {% endblock %}
 
