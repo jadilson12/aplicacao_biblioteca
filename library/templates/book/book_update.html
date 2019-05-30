@@ -1,60 +1,124 @@
+{% extends 'base.html' %}
+
 {% load bootstrap %}
 
-<form method="post" data-url="{% url 'book.update' form.instance.id %}" class="update-form">
+{% block content %}
 
-    {% csrf_token %}
     <div class="modal-header">
         <h5 class="modal-title">Update Book</h5>
     </div>
-    <div class="modal-body">
-{#        {{form|bootstrap}}#}
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-heading"></i></div>
-            </div>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Title" maxlength="50"
-                   value="{{ form.title.value }}" required>
-        </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-at"></i></div>
-            </div>
-            <input type="text" class="form-control" name="author" placeholder="Author" maxlength="50"
-                   value="{{ form.author.value }}" required>
-        </div>
+<form method="post" enctype="multipart/form-data" id="form-update">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-swatchbook"></i></div>
-            </div>
-            <input type="text" class="form-control" name="pages" placeholder="Pages" maxlength="50"
-                   value="{{ form.pages.value }}" required>
-        </div>
+    {% csrf_token %}
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-quote-right"></i></div>
-            </div>
-            <input type="date" class="form-control" name="publication_date"
-                   value="{{ form.publication_date.value|date:"Y-m-d" }}" required>
-        </div>
+    <div class="modal-body ">
 
-        <div class="mb-3">
-            {{ form.category|bootstrap }}
-        </div>
+       <div class="row">
+           <div class="col col-sm-6">
+               <div class="nav justify-content-center">
 
-        <label for="summary" class="control-label">Resume Book</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-book-open"></i></div>
+                        {% if book.cover %}
+                            <img id="output" src="{{ book.cover.url }}" alt="{{ book.title }}" class="img-thumbnail" style="max-height: 300px"/>
+                        {% else %}
+                            <img id="output" src="/media/book/cover/no_cover.jpg" alt="Image Preview" class="img-thumbnail" style="max-height: 300px"/>
+                        {% endif %}
+               </div>
+           </div>
+
+           <div class="col col-sm-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                         <div class="input-group-text"><i class="fas fa-heading"></i></div>
+                    </div>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" value="{{ book.title }}" >
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-at"></i></div>
+                    </div>
+                    <input type="text" class="form-control" name="author" value="{{ book.author }}"  placeholder="Author" maxlength="50" >
+                </div>
+
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-swatchbook"></i></div>
+                            </div>
+                            <input type="text" class="form-control" name="pages"  value="{{ book.pages }}" placeholder="Pages" maxlength="50" >
+                        </div>
+
+                    </div>
+                    <div class="col col-sm-6">
+                       <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                           <input type="date" class="form-control" name="publication_date"
+                                  value="{{book.publication_date|date:"Y-m-d" }}"
+                           >
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                  </div>
+                    <select name="category" class="custom-select">
+                        <option value="{{ book.category_id }}" >{{ book.category }}</option>
+                        {% for a in category %}
+                            <option value="{{ a.id }}"> {{ a.name }} </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend">
+                    <div class="input-group-text "><br><i class="fas fa-book-open"></i></div>
+                    <span class="input-group-text ">Resume Book</span>
+                </div>
+
+                <textarea type="date" class="form-control" name="summary"   id="summary" rows="3">{{ book.summary }}</textarea>
+                
             </div>
-            <textarea type="date" class="form-control" name="summary" id="summary" rows="3" required>{{ form.summary.value }}</textarea>
-        </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="id_cover">Image Book</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file"  name="cover"  accept="image/*" class="custom-file-input" id="id_cover" onchange="loadFile(event)">
+                    <label class="custom-file-label" for="fileImage">Choose file</label>
+                </div>
+              </div>
+            </div>
+       </div>
 
     </div>
     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-secondary" id="btn-close" onclick="history.go(-1)">Back</button>
+        <a  class="btn btn-primary"  onclick="update('{{ book.id }}')" role="button">Save</a>
+
     </div>
 </form>
+
+<script>
+
+    var loadFile = (event) => {
+        let output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+         function update(id){
+             console.log(id)
+             $('#from-update').attr('action', '/livros/atualizar/' + id);
+             $( "#form-update" ).submit();
+     }
+
+</script>
+
+{% endblock %}
