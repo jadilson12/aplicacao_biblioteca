@@ -1,68 +1,81 @@
 {% load bootstrap %}
 
-<form method="post" data-url="{% url 'book.create' %}" class="create-form">
-
-    {% csrf_token %}
     <div class="modal-header">
         <h5 class="modal-title">Add Book</h5>
     </div>
-    <div class="modal-body">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-heading"></i></div>
+<form method="post" action="{% url 'book.create' %}"  enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <div class="modal-body ">
+
+       <div class="row">
+           <div class="col col-sm-6">
+               <div class="nav justify-content-center">
+                 <img id="output" src="/media/book/cover/no_cover.jpg" alt="Image Preview" class="img-thumbnail" style="max-height: 300px"/>
+               </div>
+           </div>
+
+           <div class="col col-sm-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                         <div class="input-group-text"><i class="fas fa-heading"></i></div>
+                    </div>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" required>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-at"></i></div>
+                    </div>
+                    <input type="text" class="form-control" name="author" placeholder="Author" maxlength="50" required>
+                </div>
+
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-swatchbook"></i></div>
+                            </div>
+
+                            <input type="text" class="form-control" name="pages" placeholder="Pages" maxlength="50" required>
+                        </div>
+
+                    </div>
+                    <div class="col col-sm-6">
+                       <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                           <input type="date" class="form-control" name="publication_date" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    {{ form.category|bootstrap }}
+                </div>
+
+                 <label for="summary" class="control-label">Resume Book</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-book-open"></i></div>
+                </div>
+                <textarea type="date" class="form-control" name="summary" id="summary" rows="3" required></textarea>
             </div>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" required>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-at"></i></div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="id_cover">Image Book</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file"  name="cover"  accept="image/*" class="custom-file-input" id="id_cover" onchange="loadFile(event)">
+                    <label class="custom-file-label" for="fileImage">Choose file</label>
+                </div>
+              </div>
             </div>
-            <input type="text" class="form-control" name="author" placeholder="Author" maxlength="50" required>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-swatchbook"></i></div>
-            </div>
-            <input type="text" class="form-control" name="pages" placeholder="Pages" maxlength="50" required>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-quote-right"></i></div>
-            </div>
-            <input type="date" class="form-control" name="publication_date" required>
-        </div>
-
-        <div class="mb-3">
-            {{ form.category|bootstrap }}
-        </div>
-
-        <label for="summary" class="control-label">Resume Book</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fas fa-book-open"></i></div>
-            </div>
-            <textarea type="date" class="form-control" name="summary" id="summary" rows="3" required></textarea>
-        </div>
-
-{#        <div class="input-group mb-3">#}
-{#            <div class="input-group-prepend">#}
-{#                <span class="input-group-text" id="imgInp">Image Book</span>#}
-{#            </div>#}
-{#            <div class="custom-file">#}
-{#                <input type="file" class="custom-file-input" accept="image/*" id="imgInp" onchange="loadFile(event)">#}
-{#                <label class="custom-file-label" for="fileImage">Choose file</label>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{##}
-{#        <div class="nav justify-content-center">#}
-{#            <img id="output" src="" alt="Image Preview" class="img-thumbnail" style="max-height: 300px"/>#}
-{#        </div>#}
-
+       </div>
 
     </div>
     <div class="modal-footer">
@@ -71,11 +84,11 @@
     </div>
 </form>
 
-{#<script>#}
-{##}
-{#    var loadFile = function (event) {#}
-{#        var output = document.getElementById('output');#}
-{#        output.src = URL.createObjectURL(event.target.files[0]);#}
-{#    };#}
-{##}
-{#</script>#}
+<script>
+
+    const loadFile = (event) => {
+        let output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+</script>
