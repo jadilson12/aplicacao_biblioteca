@@ -3,7 +3,8 @@ from django.shortcuts import render
 from library.services import (
     category_services,
     book_services,
-    user_services
+    user_services,
+    reservationBook_services
 )
 
 
@@ -70,3 +71,14 @@ def signup(request):
 
 def profile(resquest):
     return render(resquest, 'student/profile.html')
+
+
+# Reservation
+def book_view(request, id):
+    data = reservationBook_services.view(request, id)
+    return data
+
+
+def book_reserve(request):
+    data = reservationBook_services.reserve(request)
+    return data

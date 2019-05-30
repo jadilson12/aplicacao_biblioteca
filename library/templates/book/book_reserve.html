@@ -1,0 +1,23 @@
+{% load bootstrap %}
+
+    <div class="modal-header">
+        <h5 class="modal-title">Reserve Book</h5>
+    </div>
+
+<form method="post" action="{% url 'book.reserve' %}">
+
+    {% csrf_token %}
+
+    <div class="modal-body ">
+{#        {{ form|bootstrap }}#}
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+   </div>
+</form>
+
+<script>
+
+</script>

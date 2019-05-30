@@ -11,6 +11,8 @@ urlpatterns = [
     path('livros/criar', v.book_create, name='book.create'),
     path('livros/atualizar/<int:id>', v.book_update, name='book.update'),
     path('livros/excluir/<int:id>', v.book_delete, name='book.delete'),
+    path('livros/visualizar/<int:id>', v.book_view, name='book.view'),
+    path('livros/reserve', v.book_reserve, name='book.reserve'),
 
     # category
     path('categoria/', v.category_list, name='category.list'),

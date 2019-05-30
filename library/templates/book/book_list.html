@@ -54,6 +54,7 @@
                 <th>Page</th>
                 <th>Publication Date</th>
                 <th>Category</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -68,6 +69,15 @@
                     <td>{{ book.publication_date }}</td>
                     <td>{{ book.category }}</td>
                     <td>
+                        {% if book.reservation %}
+                           reserved
+                        {% else %}
+                           available
+                        {% endif %}
+
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-primary"  href="{% url 'book.view' book.id %}">View</a>
                         {% if user.is_superuser %}
                         <a class="btn btn-sm btn-primary"  href="{% url 'book.update' book.id %}">Edit</a>
                         <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete"
