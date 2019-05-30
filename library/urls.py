@@ -8,9 +8,9 @@ urlpatterns = [
 
     # book
     path('livros/', v.book_list, name='book.list'),
-    path('api/livros/criar', v.book_create, name='book.create'),
-    path('api/livros/atualizar/<int:id>', v.book_update, name='book.update'),
-    path('api/livros/excluir/<int:id>', v.book_delete, name='book.delete'),
+    path('livros/criar', v.book_create, name='book.create'),
+    path('livros/atualizar/<int:id>', v.book_update, name='book.update'),
+    path('livros/excluir/<int:id>', v.book_delete, name='book.delete'),
 
     # category
     path('categoria/', v.category_list, name='category.list'),
