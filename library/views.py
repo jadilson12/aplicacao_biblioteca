@@ -82,3 +82,10 @@ def book_view(request, id):
 def book_reserve(request):
     data = reservationBook_services.reserve(request)
     return data
+
+
+# Reservation list
+
+def reserve_list(request):
+    data = reservationBook_services.list(request)
+    return data

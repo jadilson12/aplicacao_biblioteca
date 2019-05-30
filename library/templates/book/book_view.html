@@ -28,30 +28,28 @@
                 <b>summary:</b> {{ book.summary }} <br>
 
                 <hr>
-                <b>Status: <b>
+                <b>Status: </b>
                    {% if book.reservation %}
                        reserved <br>
                    {% else %}
                         <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-reserve" role="button">Reserve</button><br>
                    {% endif %}
 
-                <input type="hidden" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" value="{{ book.title }}" >
+                <input type="hidden" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" value="{{ book.title }}">
                 <input type="hidden" class="form-control" name="author" value="{{ book.author }}"  placeholder="Author" maxlength="50" >
                 <input type="hidden" class="form-control" name="pages"  value="{{ book.pages }}" placeholder="Pages" maxlength="50">
                 <input type="hidden" class="form-control" name="publication_date"  value="{{book.publication_date|date:"Y-m-d" }}" >
 {#                <textarea type="hidden" class="form-control" name="summary"   id="summary" rows="3">{{ book.summary }}</textarea>#}
-                <input type="hidden"  name="cover"  accept="image/*" class="custom-file-input" id="id_cover" onchange="loadFile(event)">
+                <input type="hidden"  name="cover"  accept="image/*" class="custom-file-input" id="id_cover">
            </div>
        </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="btn-close" onclick="history.go(-1)">Back</button>
-        <a  class="btn btn-primary"  onclick="update('{{ book.id }}')" role="button">Save</a>
-
     </div>
 
 
     <div class="modal fade" id="modal-reserve">
-        <div class="modal-dialog modal-custom">
+        <div class="modal-dialog">
             <div class="modal-content">
                   {% include "book/book_reserve.html" %}
             </div>

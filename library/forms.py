@@ -24,9 +24,10 @@ class ReservationBookForm(ModelForm):
     class Meta:
         model = ReservationBook
         fields = '__all__'
-        # widgets = {
-        #     'reservationDate': DateInput(attrs={'type': 'date'})
-        # }
+        widgets = {
+            'date_now': DateInput(attrs={'type': 'date'}),
+            'expireDate': DateInput(attrs={'type': 'date'})
+        }
 
 
 class SignUpForm(UserCreationForm):

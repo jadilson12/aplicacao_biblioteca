@@ -20,6 +20,10 @@ urlpatterns = [
     path('categoria/atualizar/<int:id>', v.category_update, name='category.update'),
     path('categoria/excluir/<int:id>', v.category_delete, name='category.delete'),
 
+    # reserve
+    path('reserve/', v.reserve_list, name='reserve.list'),
+
+
     # user
     path('signup/', v.signup, name='signup'),
     path('profile/', v.profile, name='profile'),

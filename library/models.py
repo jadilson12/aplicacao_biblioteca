@@ -48,11 +48,12 @@ def update_user_profile(sender, instance, created, **kwargs):
 
 
 class ReservationBook(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User)
-    reservationDate = models.DateField()
-    expireDate = models.DateField(default=datetime.now()+timedelta(days=10))
+    idbook = models.IntegerField(null=False, blank=True)
+    idUser = models.IntegerField(null=False, blank=True)
+    # date_now = models.DateField()
+    # expireDate = models.DateField(default=datetime.now()+timedelta(days=10))
 
     def __str__(self):
-        return self.book.title
+        return str(self.idbook)
+
 
