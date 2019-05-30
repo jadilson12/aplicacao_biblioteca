@@ -1,7 +1,10 @@
+from datetime import timedelta
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.datetime_safe import datetime
 
 
 class Category(models.Model):
@@ -19,6 +22,7 @@ class Book(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     summary = models.TextField(max_length=100)
     cover = models.ImageField(upload_to='book/cover/', null=True, blank=True)
+    reservation = models.BooleanField(null=False, blank=True)
 
     def __str__(self):
         return self.title + ' - ' + self.author
@@ -41,3 +45,14 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class ReservationBook(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User)
+    reservationDate = models.DateField()
+    expireDate = models.DateField(default=datetime.now()+timedelta(days=10))
+
+    def __str__(self):
+        return self.book.title
+

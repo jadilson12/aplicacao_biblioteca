@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm, DateInput
-from .models import Category, Book
+from .models import Category, Book, ReservationBook
 from django import forms
 
 
@@ -20,6 +20,15 @@ class BookForm(ModelForm):
         }
 
 
+class ReservationBookForm(ModelForm):
+    class Meta:
+        model = ReservationBook
+        fields = '__all__'
+        # widgets = {
+        #     'reservationDate': DateInput(attrs={'type': 'date'})
+        # }
+
+
 class SignUpForm(UserCreationForm):
     cpf = forms.IntegerField(help_text='Required')
     registration_id = forms.IntegerField(help_text='Required')
@@ -33,4 +42,3 @@ class SignUpForm(UserCreationForm):
             'username': forms.TextInput(attrs={'placeholder': 'Paul'}),
             'email': forms.TextInput(attrs={'placeholder': 'youname@gmail.com'}),
         }
-
