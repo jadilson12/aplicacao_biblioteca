@@ -1,18 +1,6 @@
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-
 from library.forms import ReservationBookForm
 from library.models import Book, Category, ReservationBook
-
-
-def reserve_list(request):
-    data = {
-        # 'books': ReservationBook.objects.all(),
-        'form': ReservationBookForm(),
-        # 'category': Category.objects.all(),
-        # 'user': User.objects.all()
-    }
-    return render(request, 'reserve/reserve.list.html', data)
 
 
 def view(request, id):
@@ -33,3 +21,11 @@ def reserve(request):
     else:
         form = ReservationBookForm()
         return render(request, 'book/book_reserve.html', {'form': form})
+
+
+def list(request):
+    data = {
+        'category': Category.objects.all(),
+        'reserves': ReservationBook.objects.all()
+    }
+    return render(request, 'reserve/reserve.list.html', data)

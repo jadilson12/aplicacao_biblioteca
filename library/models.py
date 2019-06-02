@@ -48,12 +48,12 @@ def update_user_profile(sender, instance, created, **kwargs):
 
 
 class ReservationBook(models.Model):
-    idbook = models.IntegerField(null=False, blank=True)
-    idUser = models.IntegerField(null=False, blank=True)
+    book = models.ManyToManyField(Book)
+    user = models.ManyToManyField(User)
     # date_now = models.DateField()
     # expireDate = models.DateField(default=datetime.now()+timedelta(days=10))
 
     def __str__(self):
-        return str(self.idbook)
+        return str(self.user.get()) + ' - ' + str(self.book.get())
 
 

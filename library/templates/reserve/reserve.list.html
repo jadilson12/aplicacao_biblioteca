@@ -4,11 +4,37 @@
 
 {% block content %}
 
-    <section class="livros" id="portfolio">
+<section class="livros" id="portfolio">
 
     <hr>
-    </section>
+    <table class="table" id="table-reserve">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book</th>
+            <th>User</th>
+        </tr>
+        </thead>
+        <tbody>
+         {% for reserve in reserves %}
+              <tr>
+                <td>{{ reserve.id }}</td>
+                <td>{{ reserve.user.name }}</td>
+                <td>{{ reserve.book.title }}</td>
+              </tr>
+         {% endfor %}
+        </tbody>
+    </table>
+</section>
 
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $('#table-reserve').DataTable();
+        });
+    </script>
 {% endblock %}
 
 

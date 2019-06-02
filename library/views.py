@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
 from library.models import Book
 from library.services import (
     category_services,
     book_services,
     user_services,
-    reservationBook_services
+    reservation_services
 )
 
 
@@ -79,17 +78,17 @@ def profile(resquest):
 
 # Reservation
 def book_view(request, id):
-    data = reservationBook_services.view(request, id)
+    data = reservation_services.view(request, id)
     return data
 
 
 def book_reserve(request):
-    data = reservationBook_services.reserve(request)
+    data = reservation_services.reserve(request)
     return data
 
 
 # Reservation list
 
 def reserve_list(request):
-    data = reservationBook_services.list(request)
+    data = reservation_services.list(request)
     return data
