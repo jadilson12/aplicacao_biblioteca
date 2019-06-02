@@ -28,82 +28,22 @@
         <div class="container">
             <div class="row">
                 {% for book in books %}
-
-                <div class="col-md-2">
-                    <div class="card mb-2 shadow-sm">
-                        <img class="card-img-top figure-img img-fluid rounded"
-                             src="{{ book.cover.url }}" alt="{{ book.title }}" >
-                        <div class="card-body">
-                            <b>Title:</b>
-                            <i>{{ book.title }}</i>
-                            <b>Published</b>
-                            <i>{{book.publication_date|date:"Y-m-d" }}</i>
-                            <a class="btn btn-sm btn-secondary" href="/livros/visualizar/{{ book.id }}" role="button">Detail more...</a>
+                    <div class="col-md-2">
+                        <div class="card mb-2 shadow-sm">
+                            <img class="card-img-top figure-img img-fluid rounded"
+                                 src="{{ book.cover.url }}" alt="{{ book.title }}" >
+                            <div class="card-body">
+                                <b>Title:</b>
+                                <i>{{ book.title }}</i>
+                                <b>Published</b>
+                                <i>{{book.publication_date|date:"Y-m-d" }}</i>
+                                <a class="btn btn-sm btn-secondary" href="/livros/visualizar/{{ book.id }}" role="button">Detail more...</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
                 {% endfor %}
-                
-{##}
-{#                <div class="col-md-2">#}
-{#                    <div class="card mb-2 shadow-sm">#}
-{#                        <img class="card-img-top figure-img img-fluid rounded"#}
-{#                             src="{% static 'img/livros/2.jpg' %}">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">Tilulo 2</p>#}
-{#                            <p class="card-text">view: 64347</p>#}
-{#                            <button class="btn btn-sm btn-secondary">Veja mais</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-md-2">#}
-{#                    <div class="card mb-2 shadow-sm">#}
-{#                        <img class="card-img-top figure-img img-fluid rounded"#}
-{#                             src="{% static 'img/livros/3.jpg' %}">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">Tilulo 3</p>#}
-{#                            <p class="card-text">view: 7347</p>#}
-{#                            <button class="btn btn-sm btn-secondary">Veja mais</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-md-2">#}
-{#                    <div class="card mb-2 shadow-sm">#}
-{#                        <img class="card-img-top figure-img img-fluid rounded"#}
-{#                             src="{% static 'img/livros/3.jpg' %}">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">Tilulo 4</p>#}
-{#                            <p class="card-text">view: 7647</p>#}
-{#                            <button class="btn btn-sm btn-secondary">Veja mais</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-md-2">#}
-{#                    <div class="card mb-2 shadow-sm">#}
-{#                        <img class="card-img-top figure-img img-fluid rounded"#}
-{#                             src="{% static 'img/livros/3.jpg' %}">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">Tilulo 5</p>#}
-{#                            <p class="card-text">view: 4347</p>#}
-{#                            <button class="btn btn-sm btn-secondary">Veja mais</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-md-2">#}
-{#                    <div class="card mb-2 shadow-sm">#}
-{#                        <img class="card-img-top figure-img img-fluid rounded"#}
-{#                             src="{% static 'img/livros/3.jpg' %}">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">Tilulo 6</p>#}
-{#                            <p class="card-text">view: 7647</p>#}
-{#                            <button class="btn btn-sm btn-secondary">Veja mais</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
             </div>
         </div>
     </div>
 
 {% endblock %}
-

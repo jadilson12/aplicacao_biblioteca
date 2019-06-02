@@ -6,14 +6,9 @@
 
 <form method="post" action="{% url 'book.reserve' %}">
     {% csrf_token %}
-
-
-
-
     <div class="modal-body ">
         <div class="card-text">
-            Confirmação da reserva
-        </div>
+            Confirm the reserve </div>
         <br>
         <div>
         <input type="hidden" value="{{ user.id }}" name="idUser" >
@@ -27,7 +22,3 @@
     </div>
    </div>
 </form>
-
-<script>
-
-</script>

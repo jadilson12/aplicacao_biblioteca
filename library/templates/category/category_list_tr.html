@@ -4,10 +4,10 @@
         <td>{{ category.name }}</td>
         <td>
             <button class="btn btn-sm btn-primary show-form-update" data-url="{% url 'category.update' category.id %}">
-                Edit
+               <i class="fas fa-edit"></i>
             </button>
             <button class="btn btn-sm btn-danger show-form-delete" data-url="{% url 'category.delete' category.id %}">
-                Delete
+                <i class="fas fa-trash"></i>
             </button>
         </td>
     </tr>
