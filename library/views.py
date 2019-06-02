@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+
+from library.models import Book
 from library.services import (
     category_services,
     book_services,
@@ -9,7 +11,9 @@ from library.services import (
 
 
 def page_home(resquest):
-    return render(resquest, 'index.html')
+    books = Book.objects.all()
+    data = {'books': books}
+    return render(resquest, 'index.html', data)
 
 
 def page_book(resquest):
