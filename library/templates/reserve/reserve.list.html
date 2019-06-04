@@ -10,17 +10,21 @@
     <table class="table" id="table-reserve">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Book</th>
             <th>User</th>
+            <th>Reserved</th>
+            <th>Expire</th>
         </tr>
         </thead>
         <tbody>
          {% for reserve in reserves %}
               <tr>
                 <td>{{ reserve.id }}</td>
-                <td>{{ reserve.user.name }}</td>
-                <td>{{ reserve.book.title }}</td>
+                <td>{{ reserve.book.title}}</td>
+                <td>{{ reserve.user.username }}</td>
+                <td>{{ reserve.date_now }}</td>
+                <td>{{ reserve.expireDate }}</td>
               </tr>
          {% endfor %}
         </tbody>
