@@ -30,8 +30,15 @@
                 {% for book in books %}
                     <div class="col-md-2">
                         <div class="card mb-2 shadow-sm">
-                            <img class="card-img-top figure-img img-fluid rounded"
+
+                            {% if book.cover %}
+                               <img class="card-img-top figure-img img-fluid rounded"
                                  src="{{ book.cover.url }}" alt="{{ book.title }}" >
+                            {% else %}
+                                <img id="output" src="/media/book/cover/no_cover.jpg" alt="Image Preview"
+                                     class="img-thumbnail" style="max-height: 300px"/>
+                            {% endif %}
+
                             <div class="card-body">
                                 <b>Title:</b>
                                 <i>{{ book.title }}</i>
