@@ -17,7 +17,7 @@ def reserve(request):
         form = ReservationBookForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('book.list')
+            return redirect('reserve.list')
     else:
         form = ReservationBookForm()
         return render(request, 'book/book_reserve.html', {'form': form})
