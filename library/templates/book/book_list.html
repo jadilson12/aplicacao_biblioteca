@@ -14,9 +14,7 @@
             </div>
         {% endif %}
 
-
     <hr>
-
             <table class="table" id="table-book">
             <thead>
             <tr>
@@ -26,7 +24,6 @@
                 <th>Page</th>
                 <th>Publication Date</th>
                 <th>Category</th>
-                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -41,14 +38,6 @@
                     <td>{{ book.publication_date }}</td>
                     <td>{{ book.category }}</td>
                     <td>
-                        {% if book.reservation %}
-                           reserved
-                        {% else %}
-                           available
-                        {% endif %}
-
-                    </td>
-                    <td>
                         <a class="btn btn-sm btn-primary"  href="{% url 'book.view' book.id %}"><i class="fas fa-eye"></i></a>
                         {% if user.is_superuser %}
                         <a class="btn btn-sm btn-primary"  href="{% url 'book.update' book.id %}"><i class="fas fa-edit"></i></a>
@@ -59,9 +48,8 @@
                 </tr>
                 {% endfor %}
 
-{#            <p class="alert alert-warning text-center">The list is empty</p>#}
-
         </tbody>
+
         </table>
         <div class="modal fade" id="modal-create">
             <div class="modal-dialog modal-custom ">

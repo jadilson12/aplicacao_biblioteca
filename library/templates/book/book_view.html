@@ -32,7 +32,13 @@
                    {% if book.reservation %}
                        reserved <br>
                    {% else %}
-                        <button  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-reserve" role="button"><i class="fas fa-save"></i> Reserve</button><br>
+{#                        {% if user.is_authenticated %}#}
+                            <button  class="btn btn-primary btn-sm" data-toggle="modal"
+                                     data-target="#modal-reserve" role="button"><i class="fas fa-save">
+                            </i> Reserve</button><br>
+{#                        {% else %}#}
+{#                            <a href="{% url 'login' %}" class="btn btn-primary btn-sm" role="button" >Reserve</a>#}
+{#                        {% endif %}#}
                    {% endif %}
 
                 <input type="hidden" class="form-control" name="title" id="title" placeholder="Title" maxlength="50" value="{{ book.title }}">

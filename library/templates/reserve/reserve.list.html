@@ -19,6 +19,8 @@
         </thead>
         <tbody>
          {% for reserve in reserves %}
+
+             {% if reserve.user.username == user.username %}
               <tr>
                 <td>{{ reserve.id }}</td>
                 <td>{{ reserve.book.title}}</td>
@@ -26,6 +28,18 @@
                 <td>{{ reserve.date_now }}</td>
                 <td>{{ reserve.expireDate }}</td>
               </tr>
+             {% endif %}
+             {% if user.is_superuser %}    
+               <tr>
+                <td>{{ reserve.id }}</td>
+                <td>{{ reserve.book.title}}</td>
+                <td>{{ reserve.user.username }}</td>
+                <td>{{ reserve.date_now }}</td>
+                <td>{{ reserve.expireDate }}</td>
+              </tr>
+             {% endif %}
+
+
          {% endfor %}
         </tbody>
     </table>

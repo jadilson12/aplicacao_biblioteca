@@ -1,5 +1,6 @@
 {% load bootstrap %}
 
+{% if user.is_authenticated%}
     <div class="modal-header">
         <h5 class="modal-title">Reserve Book</h5>
     </div>
@@ -22,3 +23,18 @@
     </div>
    </div>
 </form>
+{% else %}
+    <div class="modal-header">
+        <h5 class="modal-title">Important warning</h5>
+    </div>
+    <div class="modal-body ">
+
+        <p>Sorry for booking you must be logged in :)</p>
+
+    <div class="modal-footer">
+        <button type="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    </div>
+   </div>
+{% endif %}
+
