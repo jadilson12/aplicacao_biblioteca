@@ -4,16 +4,16 @@
 
 {% block content %}
 <section class="livros" id="portfolio">
-        <h5 class="modal-title">Detail Book</h5>
+        <h5 class="modal-title mt-3">Detail Book</h5>
         <hr>
        <div class="row">
            <div class="col col-sm-6">
                <div class="nav justify-content-center">
 
                         {% if book.cover %}
-                            <img id="output" src="{{ book.cover.url }}" alt="{{ book.title }}" class="img-thumbnail" style="max-height: 300px"/>
+                            <img id="output" src="{{ book.cover.url }}" alt="{{ book.title }}" class="img-thumbnail mb-3" style="max-height: 300px"/>
                         {% else %}
-                            <img id="output" src="/media/book/cover/no_cover.jpg" alt="Image Preview" class="img-thumbnail" style="max-height: 300px"/>
+                            <img id="output" src="/media/book/cover/no_cover.jpg" alt="Image Preview" class="img-thumbnail mb-3" style="max-height: 300px"/>
                         {% endif %}
                </div>
            </div>
@@ -25,7 +25,7 @@
                 <b>Nº pages:</b> {{ book.pages }} <br>
                 <b>Publication Date:</b> {{book.publication_date|date:"d-m-Y" }}<br>
                 <b>Category:</b> {{ book.category }} <br>
-                <b>summary:</b> {{ book.summary }} <br>
+                <b>Summary:</b> {{ book.summary }} <br>
 
                 <hr>
                 <b>Status: </b>
