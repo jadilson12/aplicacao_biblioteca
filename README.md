@@ -6,6 +6,11 @@
 </p>
 
 
+## Abstração de arquitetura do projeto
+<p align="center">
+  <img src="https://i.imgur.com/6YtcMp3.png" width="300">
+</p>
+
 ## Problematica 
 
 > Desenvolver um sistema bibliotecário com a utilização do framework Django para avaliação da matéria de Programação Web 1
