@@ -6,6 +6,10 @@
 </p>
 
 
+## Problematica 
+
+> Desenvolver um sistema bibliotecário com a utilização do framework Django para avaliação da matéria de Programação Web 1
+
 # Como usar projeto
 
 ```
