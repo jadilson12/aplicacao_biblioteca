@@ -76,3 +76,5 @@ Depois basta iniciar o servidor de desenvolvimento
 ```
 $ ./manage.py run server
 ```
+
+Basta acessar: `localhost:8000`
